@@ -14,7 +14,6 @@ jobs:
                   wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
                   whoami
                   id
-                  ls -la ~/.ssh
                   mkdir ~/.ssh
                   ls -la ~/.ssh
                   chmod 700 ~/.ssh
