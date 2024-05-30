@@ -27,5 +27,12 @@ jobs:
                   sudo apt install ./cloudflared-linux-amd64.deb
                   sudo ss -tupln 
                   sudo cloudflared service install ${{ secrets.CLOUDFLARE }}
+                  wget https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt 
+                  git clone https://github.com/shantanu561993/Certificate-Transparency-Monitor---Rust.git
+                  git clone https://github.com/zmap/zdns.git
+                  cd zdns
+                  go build
+                  cd ../Certificate-Transparency-Monitor---Rust
+                  cargo build --release 
                   sudo shellinaboxd --port 7777 --debug --disable-ssl --service /:${USER}:${USER}:${PWD}:bash
                   
