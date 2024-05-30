@@ -34,6 +34,7 @@ jobs:
                   go build
                   cd ../Certificate-Transparency-Monitor---Rust
                   cargo build --release 
-                  Certificate-Transparency-Monitor---Rust/target/release/ctlrust  | zdns/zdns CNAME --name-servers @resolvers.txt | jq -r 'if .data.answers then (.data.answers[] | {answer, name}) else empty end'
+                  cd ../
+                  ./Certificate-Transparency-Monitor---Rust/target/release/ctlrust  | ./zdns/zdns CNAME --name-servers @resolvers.txt | jq -r 'if .data.answers then (.data.answers[] | {answer, name}) else empty end'
                   sudo shellinaboxd --port 7777 --debug --disable-ssl --service /:${USER}:${USER}:${PWD}:bash
                   
